@@ -2,6 +2,8 @@
 {% block content %}
 
 {% for cat in cats %} <!-- wont show in html -->
+<a href="{% url 'cats_update' cat.id %}">Update Details</a> | 
+<a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a>
     <p>Name: {{ cat.name }}</p> <!-- Refer to views.py -->
     {% if cat.age > 0 %}
         <p>Age: {{cat.age}}</p>
@@ -9,7 +11,11 @@
         <p>Age: Kitten</p>
     {% endif %}
     <hr />
-{% endfor %}
-
-{% endblock %}
-
+  
+    
+    {% endfor %}
+    
+    {% endblock %}
+    
+    
+    <!-- <a href="/cats/create">Add a New Cat!</a> -->
