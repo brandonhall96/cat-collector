@@ -9,6 +9,8 @@ def about(request): # Call about in our urls.py
 def index(request):
     return render(request, 'index.html')
 
+
+# Before we create our next function, we are going to make a class
 class Cat:
     def __init__(self, name, breed, description, age):
         self.name = name
@@ -29,4 +31,3 @@ def cats_index(request):
 
 
 
-# Before we create our next function, we are going to make a class
