@@ -1,22 +1,15 @@
-<!-- templates/cats/index.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>catcollector</title>
-  </head>
-  <body>
-    <h1>the catcollector's cats</h1>
-    <hr />
-    {% for cat in cats %} <!-- wont show in html -->
-        <p>Name: {{ cat.name }}</p> <!-- Refer to views.py -->
-        {% if cat.age > 0 %}
-            <p>Age: {{cat.age}}</p>
-        {% else %}
-            <p>Age: Kitten</p>
-        {% endif %}
-        <hr />
-    {% endfor %}
+{% extends 'base.html' %}
+{% block content %}
 
-    <footer>All Rights Reserved, catcollector 2018</footer>
-  </body>
-</html>
+{% for cat in cats %} <!-- wont show in html -->
+    <p>Name: {{ cat.name }}</p> <!-- Refer to views.py -->
+    {% if cat.age > 0 %}
+        <p>Age: {{cat.age}}</p>
+    {% else %}
+        <p>Age: Kitten</p>
+    {% endif %}
+    <hr />
+{% endfor %}
+
+{% endblock %}
+

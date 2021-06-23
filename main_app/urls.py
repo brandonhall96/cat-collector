@@ -8,7 +8,10 @@ urlpatterns = [
     path('', views.index, name='index' ),
     path('about/', views.about, name='about' ), #views.about goes to views.py which returns render from about.html
     path('cats/', views.cats_index, name='cats_index' ), # Get cats folder. call cats_index from views.py
-    path('cats/<int:cat_id>/', views.cats_show, name='cats_show')
+    path('cats/<int:cat_id>/', views.cats_show, name='cats_show'),
+    path('cats/create/', views.CatCreate.as_view(), name='cats_create'),
+    path('cats/<int:pk>/update/', views.CatUpdate.as_view(), name='cats_update'),
+    path('cats/<int:pk>/delete/', views.CatDelete.as_view(), name='cats_delete'),
     
 ]
 
