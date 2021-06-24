@@ -48,19 +48,19 @@ def cats_show(request, cat_id): #when someone goes this route it will bring the 
 
 
 class CatCreate(CreateView):
-  model = Cat
-  fields = '__all__'
-  success_url = '/cats'
+    model = Cat
+    fields = ['name', 'breed', 'description', 'age', 'cattoys']
+    success_url = '/cats'
 
-  def form_valid(self, form):
-    self.object = form.save(commit=False)
-    self.object.user = self.request.user
-    self.object.save()
-    return HttpResponseRedirect('/cats')
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/cats')
 
 class CatUpdate(UpdateView):
   model = Cat
-  fields = ['name', 'breed', 'description', 'age']
+  fields = ['name', 'breed', 'description', 'age', 'cattoys']
 
   def form_valid(self, form):
     self.object = form.save(commit=False)

@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+
 
 {% extends 'base.html' %}
 {% load static %}
@@ -7,6 +6,8 @@
     <a href="/cats/create">Add a New Cat!</a>
     <hr />
     {% for cat in cats %}
+    <a href="{% url 'cats_update' cat.id %}">Update Details</a> | 
+    <a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a>
     <a href='/cats/{{cat.id}}'>
         <p>Name: {{ cat.name }}</p>
     </a>
@@ -17,8 +18,6 @@
     <p>Age: {{ cat.age }}</p>
     {% else %}
     <p>Age: Kitten</p>
-    <a href="{% url 'cats_update' cat.id %}">Update Details</a> | 
-    <a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a>
     {% endif %}
     <hr />
     {% endfor %}
