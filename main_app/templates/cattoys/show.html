@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Cat Toy Details</h1>
+
+<div>
+    <div>
+        <span>{{ cattoy.name }}</span>
+        <p>Color: {{ cattoy.color }}</p>
+    </div>
+    <div>
+        <a href="{% url 'cattoys_update' cattoy.id %}">Edit</a>
+        <a href="{% url 'cattoys_delete' cattoy.id %}">Delete</a>
+    </div>
+</div>
+{% endblock %}
