@@ -3,6 +3,7 @@ from .models import Cat
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 # Create your views here.
 # Methods that call upon other pages
@@ -51,6 +52,12 @@ class CatCreate(CreateView):
   fields = '__all__'
   success_url = '/cats'
 
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.user = self.request.user
+    self.object.save()
+    return HttpResponseRedirect('/cats')
+
 class CatUpdate(UpdateView):
   model = Cat
   fields = ['name', 'breed', 'description', 'age']
@@ -64,5 +71,8 @@ class CatDelete(DeleteView):
   model = Cat
   success_url = '/cats'
 
-
+def profile(request, username):
+    user = User.objects.get(username=username)
+    cats = Cat.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'cats': cats})
 
